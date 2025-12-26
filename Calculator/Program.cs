@@ -14,7 +14,7 @@
             Console.WriteLine("[S]ubtract the numbers");
             Console.WriteLine("[M]ultiply the numbers");
             var operation = Console.ReadLine() ?? String.Empty;
-            if (operation == String.Empty)
+            if (operation == string.Empty)
             {
                 Console.WriteLine("Invalid operation selected");
                 Console.WriteLine("Press any key to exit");

@@ -1,5 +1,3 @@
-using System;
-
 namespace CookiesCookbook;
 
 public class CookiesCookbookApp
@@ -7,21 +5,28 @@ public class CookiesCookbookApp
     public void Run()
     {
         Console.WriteLine("Printing available ingredients.");
-        var ingredientList = new List<Ingredient>
+        AvailableIngredients.PrintIngredients();
+        Console.WriteLine("Add an ingredient by its ID, or type anything else if finished.");
+        List<int> recipeIngredientIds = UserInput.CollectIngredientsFromList(AvailableIngredients.Ingredients);
+        if (recipeIngredientIds.Count == 0)
         {
-            new("Wheat flour", "Sieve."),
-            new("Coconut flour", "Sieve."),
-            new("Butter", "Melt on low head."),
-            new("Chocolate", "Melt in a water bath."),
-            new("Sugar", ""),
-            new("Cardamom", "Take half a teaspoon."),
-            new("Cinammon", "Take half a teaspoon."),
-            new("Cocoa powder", "")
-        };
-        foreach (var ingredient in ingredientList)
-        {
-            Console.WriteLine($"{ingredient.Id}) {ingredient.Name}");
+            Console.WriteLine("No ingredients have been selected. No recipe will be saved.");
         }
-        Console.WriteLine("Add an ingredient by its ID or type anything else if finished.");
+        else
+        {
+            Console.WriteLine("Recipe added.");
+            List<Ingredient> recipeIngredients = [];
+            foreach (var id in recipeIngredientIds)
+            {
+                if (AvailableIngredients.FindIngredientById(id) is Ingredient ingredient)
+                {
+                    recipeIngredients.Add(ingredient);
+                }
+            }
+            var recipe = new Recipe(recipeIngredients);
+            recipe.PrintRecipe();
+        }
+        Console.WriteLine("Press any key to exit.");
+        Console.ReadKey();
     }
 }
