@@ -1,32 +1,27 @@
+using CookiesCookbook.Recipes;
+
 namespace CookiesCookbook;
 
-public class CookiesCookbookApp
+public class CookiesCookbookApp(IUserInteraction userInteraction, IRecipeRepository recipeRepository)
 {
-    public void Run()
+    private readonly IUserInteraction _userInteraction = userInteraction;
+    private readonly IRecipeRepository _recipeRepository = recipeRepository;
+    public void Run(string filePath)
     {
-        Console.WriteLine("Printing available ingredients.");
-        AvailableIngredients.PrintIngredients();
-        Console.WriteLine("Add an ingredient by its ID, or type anything else if finished.");
-        List<int> recipeIngredientIds = UserInput.CollectIngredientsFromList(AvailableIngredients.Ingredients);
-        if (recipeIngredientIds.Count == 0)
-        {
-            Console.WriteLine("No ingredients have been selected. No recipe will be saved.");
-        }
-        else
-        {
-            Console.WriteLine("Recipe added.");
-            List<Ingredient> recipeIngredients = [];
-            foreach (var id in recipeIngredientIds)
-            {
-                if (AvailableIngredients.FindIngredientById(id) is Ingredient ingredient)
-                {
-                    recipeIngredients.Add(ingredient);
-                }
-            }
-            var recipe = new Recipe(recipeIngredients);
-            recipe.PrintRecipe();
-        }
-        Console.WriteLine("Press any key to exit.");
-        Console.ReadKey();
+        var recipesFromFile = _recipeRepository.Read(filePath);
+        // _userInteraction.ShowRecipes(recipesFromFile);
+        // _userInteraction.PromptForIngredients();
+        // _userInteraction.DisplayIngredients();
+        // var ingredientList = _userInteraction.GetUserIngredients();
+        // if (ingredientList.Count > 0)
+        // {
+        //     var recipe = new Recipe(ingredientList);
+        //     _recipeRepository.AddRecipe(recipe);
+        // }
+        // else
+        // {
+        //     _userInteraction.DisplayNoIngredientSaved();
+        // }
+        // _userInteraction.Exit();
     }
 }
