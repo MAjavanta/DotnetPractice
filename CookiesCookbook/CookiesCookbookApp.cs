@@ -7,22 +7,22 @@ public class CookiesCookbookApp(IUserInteraction userInteraction, IRecipeReposit
 {
     private readonly IUserInteraction _userInteraction = userInteraction;
     private readonly IRecipeRepository _recipeRepository = recipeRepository;
-    public void Run(string filePath)
+    public void Run()
     {
-        var recipesFromFile = _recipeRepository.Read(filePath);
+        var recipesFromFile = _recipeRepository.Recipes;
         _userInteraction.ShowRecipes(recipesFromFile);
         _userInteraction.PromptForIngredients();
         var ingredientList = _userInteraction.GetUserIngredients();
         if (ingredientList.Count > 0)
         {
             var recipe = new Recipe(ingredientList);
-            // _recipeRepository.AddRecipe(recipe);
+            _recipeRepository.AddRecipe(recipe);
             Console.WriteLine(recipe);
         }
         else
         {
             _userInteraction.DisplayNoIngredientSaved();
         }
-        // _userInteraction.Exit();
+        _userInteraction.Exit();
     }
 }

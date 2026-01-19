@@ -15,4 +15,14 @@ public class Recipe(IEnumerable<Ingredient> ingredients)
         }
         return string.Join(Environment.NewLine, strings);
     }
+
+    public string GetIds()
+    {
+        List<int> ids = [];
+        foreach (var ingredient in Ingredients)
+        {
+            ids.Add(ingredient.Id);
+        }
+        return string.Join(",", ids);
+    }
 }

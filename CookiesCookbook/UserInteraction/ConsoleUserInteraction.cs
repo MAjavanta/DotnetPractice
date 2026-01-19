@@ -19,7 +19,8 @@ public class ConsoleUserInteraction(IngredientRepository ingredientRepository) :
 
     public void Exit()
     {
-        throw new NotImplementedException();
+        Console.WriteLine("Press any key to exit");
+        Console.ReadKey();
     }
 
     public List<Ingredient> GetUserIngredients()

@@ -29,18 +29,20 @@ using CookiesCookbook;
 using CookiesCookbook.Recipes;
 using CookiesCookbook.UserInteraction;
 
+var filePath = Path.Combine(
+    AppContext.BaseDirectory,
+    "recipes.json"
+);
+
 var ingredientRepo = new IngredientRepository();
 var app = new CookiesCookbookApp(
     new ConsoleUserInteraction(
         ingredientRepo
     ),
     new RecipeJsonRepository(
-        ingredientRepo
+        ingredientRepo,
+        filePath
     )
 );
 
-var filePath = Path.Combine(
-    AppContext.BaseDirectory,
-    "recipes.json"
-);
-app.Run(filePath);
+app.Run();
