@@ -25,4 +25,35 @@ public class IngredientRepository
         }
         return null;
     }
+
+    public List<Ingredient> GetIngredientsFromList(string ingredients)
+    {
+        List<Ingredient> ingredientList = [];
+        foreach (var character in ingredients)
+        {
+            if (char.IsNumber(character))
+            {
+                Ingredient? ingredient = GetIngredientById(int.Parse(character.ToString()));
+                if (ingredient is not null)
+                {
+                    ingredientList.Add(ingredient);
+                }
+                else
+                {
+                    return [];
+                }
+            }
+        }
+        return ingredientList;
+    }
+
+    public string ShowIngredients()
+    {
+        string ingredientRepo = "";
+        foreach (var ingredient in _availableIngredients)
+        {
+            ingredientRepo += $"{ingredient.Id}. {ingredient.Name}" + Environment.NewLine;
+        }
+        return ingredientRepo;
+    }
 }

@@ -1,6 +1,4 @@
-using CookiesCookbook.Recipes;
-
-namespace CookiesCookbook;
+namespace CookiesCookbook.Recipes;
 
 public interface IRecipeRepository
 {

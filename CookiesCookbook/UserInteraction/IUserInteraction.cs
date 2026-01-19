@@ -1,6 +1,6 @@
 using CookiesCookbook.Recipes;
 
-namespace CookiesCookbook;
+namespace CookiesCookbook.UserInteraction;
 
 public interface IUserInteraction
 {

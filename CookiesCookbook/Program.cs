@@ -27,12 +27,20 @@ Need to print recipe: Recipe should define how to print itself, carried out in C
 */
 using CookiesCookbook;
 using CookiesCookbook.Recipes;
+using CookiesCookbook.UserInteraction;
 
+var ingredientRepo = new IngredientRepository();
 var app = new CookiesCookbookApp(
-    new ConsoleUserInteraction(),
+    new ConsoleUserInteraction(
+        ingredientRepo
+    ),
     new RecipeJsonRepository(
-        new IngredientRepository()
+        ingredientRepo
     )
 );
-var filePath = "recipes.json";
+
+var filePath = Path.Combine(
+    AppContext.BaseDirectory,
+    "recipes.json"
+);
 app.Run(filePath);
