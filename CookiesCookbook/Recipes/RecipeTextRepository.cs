@@ -1,18 +1,16 @@
-using System.Text.Json;
-
 namespace CookiesCookbook.Recipes;
 
-public class RecipeJsonRepository : IRecipeRepository
+public class RecipeTextRepository : IRecipeRepository
 {
-    public RecipeJsonRepository(IngredientRepository ingredientRepository, string filePath)
+    public RecipeTextRepository(IngredientRepository ingredientRepository, string filePath)
     {
         _filePath = filePath;
         _ingredientRepository = ingredientRepository;
         Recipes = Read();
 
     }
-    private readonly IngredientRepository _ingredientRepository;
     private readonly string _filePath;
+    private readonly IngredientRepository _ingredientRepository;
     public List<Recipe> Recipes { get; set; }
 
     public void AddRecipe(Recipe recipe)
@@ -23,17 +21,16 @@ public class RecipeJsonRepository : IRecipeRepository
         {
             ids.Add(savedRecipe.GetIds());
         }
-        File.WriteAllText(_filePath, JsonSerializer.Serialize(ids));
+        File.WriteAllText(_filePath, string.Join(Environment.NewLine, ids));
     }
 
     public List<Recipe> Read()
     {
         if (!File.Exists(_filePath)) return [];
-
         var fileText = File.ReadAllText(_filePath);
-        var recipeStrings = ParseRecipeString(fileText);
-        if (recipeStrings is null) return [];
+        var recipeStrings = ParseRecipeStrings(fileText);
 
+        if (recipeStrings is null) return [];
         List<Recipe> savedRecipes = [];
         foreach (var recipeString in recipeStrings)
         {
@@ -41,9 +38,10 @@ public class RecipeJsonRepository : IRecipeRepository
         }
         return savedRecipes;
     }
-    private static List<string>? ParseRecipeString(string? fileText)
+
+    private static List<string>? ParseRecipeStrings(string? fileText)
     {
         if (fileText is null) return [];
-        return JsonSerializer.Deserialize<List<string>>(fileText);
+        return [.. fileText.Split(Environment.NewLine)];
     }
 }
