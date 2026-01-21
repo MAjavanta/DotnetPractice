@@ -4,7 +4,7 @@ using CookiesCookbook.Recipes;
 using CookiesCookbook.UserInteraction;
 
 // Change this to read from/save to different file types
-FileType fileType = FileType.Json;
+FileType fileType = FileType.Txt;
 
 string fileName = "recipes";
 
