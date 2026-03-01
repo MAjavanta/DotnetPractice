@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DiceRollGame", "DiceRollGam
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CookiesCookbook", "CookiesCookbook\CookiesCookbook.csproj", "{141541B2-2CA7-4257-91CC-E0C07FF0BC0C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CustomCache", "CustomCache\CustomCache.csproj", "{3FE2BE5B-78AE-4AD3-AC65-F5C659D96D44}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -69,6 +71,18 @@ Global
 		{141541B2-2CA7-4257-91CC-E0C07FF0BC0C}.Release|x64.Build.0 = Release|Any CPU
 		{141541B2-2CA7-4257-91CC-E0C07FF0BC0C}.Release|x86.ActiveCfg = Release|Any CPU
 		{141541B2-2CA7-4257-91CC-E0C07FF0BC0C}.Release|x86.Build.0 = Release|Any CPU
+		{3FE2BE5B-78AE-4AD3-AC65-F5C659D96D44}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3FE2BE5B-78AE-4AD3-AC65-F5C659D96D44}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3FE2BE5B-78AE-4AD3-AC65-F5C659D96D44}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{3FE2BE5B-78AE-4AD3-AC65-F5C659D96D44}.Debug|x64.Build.0 = Debug|Any CPU
+		{3FE2BE5B-78AE-4AD3-AC65-F5C659D96D44}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{3FE2BE5B-78AE-4AD3-AC65-F5C659D96D44}.Debug|x86.Build.0 = Debug|Any CPU
+		{3FE2BE5B-78AE-4AD3-AC65-F5C659D96D44}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3FE2BE5B-78AE-4AD3-AC65-F5C659D96D44}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3FE2BE5B-78AE-4AD3-AC65-F5C659D96D44}.Release|x64.ActiveCfg = Release|Any CPU
+		{3FE2BE5B-78AE-4AD3-AC65-F5C659D96D44}.Release|x64.Build.0 = Release|Any CPU
+		{3FE2BE5B-78AE-4AD3-AC65-F5C659D96D44}.Release|x86.ActiveCfg = Release|Any CPU
+		{3FE2BE5B-78AE-4AD3-AC65-F5C659D96D44}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
