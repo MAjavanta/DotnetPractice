@@ -1,0 +1,29 @@
+GET http://localhost:5085/games
+
+###
+GET http://localhost:5085/games/5
+
+###
+POST http://localhost:5085/games
+Content-Type: application/json
+
+{
+    "name": "Nier",
+    "genre": "Adventure",
+    "price": 15.99,
+    "releaseDate": "2010-04-22"
+}
+
+###
+PUT http://localhost:5085/games/2
+Content-Type: application/json
+
+{
+    "name": "Super Mario Kart",
+    "genre": "Racing",
+    "price": 49.99,
+    "releaseDate": "2012-10-31"
+}
+
+###
+DELETE http://localhost:5085/games/2
